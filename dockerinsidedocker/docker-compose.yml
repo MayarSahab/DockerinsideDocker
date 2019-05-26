@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  jenkins:
+    privileged: true
+    user: root 
+    image: jenkinsci/jenkins
+    volumes:
+      - ./jenkins:/var/jenkins_home:rw
+      - /run/docker.sock:/var/run/docker.sock
+      - ./war:/mnt/:rw
+    ports:
+      - 8080:8080
+    container_name: jenkins
+  
+    # tomcat:
+          # image: tomcat
+    # ports:
+            #  - 7777:8080
+        # container_name: tomcat
+    # depends_on:
+            # - jenkins
+        # volumes:
+            # - ./war/:/usr/local/tomcat/webapps
